@@ -58,11 +58,11 @@ class _AppViewState extends State<AppView> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: "Home",
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: "Next",
+            label: 'Next',
           ),
         ],
       ),
