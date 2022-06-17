@@ -27,7 +27,9 @@ linter:
     always_declare_return_types: true
     always_use_package_imports: true
     avoid_dynamic_calls: true
-    
+    avoid_returning_null_for_future: true
+    empty_statements: true
+    hash_and_equals: true
 
 
 # Additional information about this file can be found at

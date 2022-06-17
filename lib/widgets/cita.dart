@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livet_mobile/widgets/bodyCita.dart';
+import 'package:livet_mobile/widgets/appoinment_body.dart';
 import 'package:livet_mobile/widgets/headerCita.dart';
 
 class CitaCard extends StatefulWidget {
