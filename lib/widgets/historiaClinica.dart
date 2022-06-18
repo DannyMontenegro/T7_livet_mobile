@@ -8,9 +8,11 @@ class HistoriaClinica extends StatefulWidget {
   State<HistoriaClinica> createState() => _HistoriaClinicaState();
 }
 
-class _HistoriaClinicaState extends State<HistoriaClinica> {
+class _HistoriaClinicaState extends State<HistoriaClinica>
+    with AutomaticKeepAliveClientMixin<HistoriaClinica> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SingleChildScrollView(
       child: Column(
         children: List.generate(
@@ -24,4 +26,7 @@ class _HistoriaClinicaState extends State<HistoriaClinica> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

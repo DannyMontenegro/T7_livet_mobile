@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:livet_mobile/models/appoinment_data_source.dart';
+import 'package:livet_mobile/services/appointmets_service.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Indicaciones extends StatelessWidget {
-  const Indicaciones({Key? key}) : super(key: key);
+  final AppoinmentService service = AppoinmentService();
+  Indicaciones({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Indicaciones'),
+    return SfCalendar(
+      view: CalendarView.month,
+      monthViewSettings: const MonthViewSettings(showAgenda: true),
+      dataSource: AppoinmentDataSource(service.getAppointments()),
     );
   }
 }

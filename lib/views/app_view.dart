@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:livet_mobile/widgets/customAppBar.dart';
 import 'package:livet_mobile/widgets/historiaClinica.dart';
 import 'package:livet_mobile/widgets/indicaciones.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppView extends StatefulWidget {
   const AppView({Key? key}) : super(key: key);
@@ -43,9 +44,9 @@ class _AppViewState extends State<AppView> {
       ),
       body: PageView(
         controller: _pageController,
-        children: const [
+        children: [
           Indicaciones(),
-          HistoriaClinica(),
+          const HistoriaClinica(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -57,11 +58,11 @@ class _AppViewState extends State<AppView> {
         selectedItemColor: Colors.white,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: FaIcon(FontAwesomeIcons.fileMedical),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: FaIcon(FontAwesomeIcons.listCheck),
             label: 'Next',
           ),
         ],
