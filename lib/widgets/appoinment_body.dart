@@ -13,11 +13,11 @@ class BodyCita extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text("Tomar medicación cada 8 horas"),
+              Text('Tomar medicación cada 8 horas'),
               SizedBox(height: 5),
-              Text("No comer sal"),
+              Text('No comer sal'),
               SizedBox(height: 5),
-              Text("Salir a caminar 30 minutos al día"),
+              Text('Salir a caminar 30 minutos al día'),
             ],
           ),
         ],

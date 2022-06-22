@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livet_mobile/constans/imageRoutes.dart';
+import 'package:livet_mobile/constans/image_routes.dart';
 
 class HeaderCita extends StatelessWidget {
   const HeaderCita({Key? key}) : super(key: key);
@@ -18,12 +18,12 @@ class HeaderCita extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Dr. Cardiológo Luis",
+              'Dr. Cardiológo Luis',
               style: TextStyle(color: Colors.white),
             ),
-            Text("Cardiología", style: style),
+            Text('Cardiología', style: style),
             const SizedBox(height: 5),
-            Text("Fecha: 12/12/2020", style: style),
+            Text('Fecha: 12/12/2020', style: style),
           ],
         ),
       ],

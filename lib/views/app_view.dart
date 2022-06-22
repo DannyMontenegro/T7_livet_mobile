@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:livet_mobile/widgets/customAppBar.dart';
-import 'package:livet_mobile/widgets/historiaClinica.dart';
+import 'package:livet_mobile/widgets/custom_app_bar.dart';
+import 'package:livet_mobile/widgets/clinical_history.dart';
 import 'package:livet_mobile/widgets/indicaciones.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

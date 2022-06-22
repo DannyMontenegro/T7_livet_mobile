@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livet_mobile/constans/imageRoutes.dart';
+import 'package:livet_mobile/constans/image_routes.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({Key? key}) : super(key: key);

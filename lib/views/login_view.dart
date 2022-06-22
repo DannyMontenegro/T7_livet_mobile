@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livet_mobile/constans/imageRoutes.dart';
+import 'package:livet_mobile/constans/image_routes.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class LoginView extends StatelessWidget {
                     fixedSize: const Size.fromWidth(120),
                   ),
                   onPressed: () {},
-                  child: const Text("Login"),
+                  child: const Text('Login'),
                 ),
               ],
             ),

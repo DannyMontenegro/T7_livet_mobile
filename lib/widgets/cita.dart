@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livet_mobile/widgets/appoinment_body.dart';
-import 'package:livet_mobile/widgets/headerCita.dart';
+import 'package:livet_mobile/widgets/appoinment_card_header.dart';
 
 class CitaCard extends StatefulWidget {
   const CitaCard({Key? key}) : super(key: key);
@@ -10,11 +10,8 @@ class CitaCard extends StatefulWidget {
 }
 
 class _CitaCardState extends State<CitaCard> {
-  late List<bool> _isOpen;
-
   @override
   void initState() {
-    _isOpen = List.generate(5, (index) => false);
     super.initState();
   }
 
