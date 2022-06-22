@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:livet_mobile/widgets/calendar.dart';
 import 'package:livet_mobile/widgets/custom_app_bar.dart';
 import 'package:livet_mobile/widgets/clinical_history.dart';
 import 'package:livet_mobile/widgets/indicaciones.dart';
@@ -45,7 +46,8 @@ class _AppViewState extends State<AppView> {
       body: PageView(
         controller: _pageController,
         children: [
-          Indicaciones(),
+          const Indicaciones(),
+          AppoinmentCalendar(),
           const HistoriaClinica(),
         ],
       ),
@@ -60,6 +62,10 @@ class _AppViewState extends State<AppView> {
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.fileMedical),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.calendar),
+            label: 'Calendar',
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.listCheck),

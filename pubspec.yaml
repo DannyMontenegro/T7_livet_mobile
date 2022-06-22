@@ -37,10 +37,13 @@ dependencies:
   expandable: ^5.0.1
   font_awesome_flutter: ^10.1.0
   syncfusion_flutter_calendar: ^20.1.60
+  syncfusion_localizations: ^20.1.61
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_localizations: # Add this line
+    sdk: flutter 
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
