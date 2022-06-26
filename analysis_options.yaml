@@ -30,6 +30,11 @@ linter:
     avoid_returning_null_for_future: true
     empty_statements: true
     hash_and_equals: true
+    camel_case_types: true
+    camel_case_extensions: true
+    library_prefixes: true
+    non_constant_identifier_names: true
+    lines_longer_than_80_chars: true
 
 
 # Additional information about this file can be found at

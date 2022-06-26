@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: appRoute,
+      initialRoute: loginRoute,
       routes: {
         loginRoute: (context) => const LoginView(),
         appRoute: (context) => const AppView(),

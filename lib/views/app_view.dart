@@ -29,10 +29,14 @@ class _AppViewState extends State<AppView> {
   }
 
   void onTap(int newIndex) {
+    changeState(newIndex);
+    _pageController.jumpToPage(index);
+  }
+
+  void changeState(newIndex) {
     setState(() {
       index = newIndex;
     });
-    _pageController.jumpToPage(index);
   }
 
   @override
@@ -50,6 +54,7 @@ class _AppViewState extends State<AppView> {
           AppoinmentCalendar(),
           const HistoriaClinica(),
         ],
+        onPageChanged: changeState,
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
