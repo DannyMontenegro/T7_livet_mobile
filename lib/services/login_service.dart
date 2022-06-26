@@ -3,7 +3,7 @@ class LoginService {
 
   Future<bool> loginWithCredentials(
       {required String email, required String password}) async {
-    Future.delayed(const Duration(seconds: 5));
+    Future.delayed(const Duration(seconds: 3));
 
     return true;
   }

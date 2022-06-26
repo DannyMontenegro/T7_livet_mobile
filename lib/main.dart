@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:livet_mobile/constans/routes.dart';
 import 'package:livet_mobile/constans/screens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:livet_mobile/utilities/shared_preferences.dart';
 
-void main() {
+void main() async {
+  await SharedPreferencesUtilites.init();
   runApp(const MyApp());
 }
 
