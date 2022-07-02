@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:livet_mobile/utilities/shared_preferences.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferencesUtilites.init();
   runApp(const MyApp());
 }

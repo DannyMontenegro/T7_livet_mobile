@@ -23,7 +23,7 @@ class AppoinmentService {
       ),
       Appoinment(
         'Cita 4',
-        DateTime(2022, 6, 20, 15, 0, 0),
+        DateTime(2022, 7, 20, 15, 0, 0),
         DateTime(2022, 6, 20, 15, 30, 0),
       ),
     ];
