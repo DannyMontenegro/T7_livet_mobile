@@ -1,16 +1,7 @@
-# livet_mobile
+# Livet Mobile
 
-A new Flutter project.
+Livet mobile is an application intended to be used by Livet Hospital's patients.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+In the folder "Documentation" you'll find the following files:
+- "livet.apk": The apk you'll need to install the application
+- "Mobile Application User Manual": A small manual where you'll find some steps to install the application and how to use it
