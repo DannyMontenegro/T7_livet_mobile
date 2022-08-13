@@ -1,9 +1,13 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:flutter/material.dart';
+import 'package:livet_mobile/services/clinical_history_service.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 class Indicaciones extends StatelessWidget {
-  const Indicaciones({Key? key}) : super(key: key);
+  Indicaciones({Key? key}) : super(key: key);
+
+  final ClinicalHistoryService _service = ClinicalHistoryService();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,11 @@ class Indicaciones extends StatelessWidget {
         children: [
           const Text('Solicitar historía clínica'),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () async {
+              context.loaderOverlay.show();
+              await _service.askForClinicalHistory(context);
+              context.loaderOverlay.hide();
+            },
             child: const Text('Enviar solicitud'),
           ),
         ],

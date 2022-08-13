@@ -18,19 +18,25 @@ class Endpoint {
     baseUrl = devUrl;
   }
 
-  static final Endpoint instance = Endpoint._sharedInstance();
+  static final Endpoint _instance = Endpoint._sharedInstance();
+
+  factory Endpoint() => _instance;
 
   final Dio _dio = Dio();
 
-  Future<dynamic> getData(String url) async {
+  Future<dynamic> getData(String path) async {
+    final String url = _getUrl(path);
     final Response response = await _dio.get(url);
     return getBody(response);
   }
 
-  Future<dynamic> postData(String url, String body) async {
+  Future<dynamic> postData(String path, Map<String, String> body) async {
+    final String url = _getUrl(path);
     final response = await _dio.post(url, data: body);
     return getBody(response);
   }
 
   dynamic getBody(Response response) => json.decode(response.data);
+
+  String _getUrl(String path) => '$baseUrl/$path';
 }

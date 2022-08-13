@@ -11,7 +11,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController _usuario = TextEditingController();
     final TextEditingController _contrasenia = TextEditingController();
-    const LoginService _login = LoginService();
+    final LoginService _login = LoginService();
 
     const fieldPadding = EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0);
     const textFieldStyle = TextStyle(color: Colors.white);
