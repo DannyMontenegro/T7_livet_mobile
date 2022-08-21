@@ -12,10 +12,11 @@ class Endpoint {
   /// Create a file in /lib/auth called keys.dart and create a variable called myIp;
   final String devUrl = myIp;
 
-  final String productionUrl = '';
+  final String productionUrl =
+      'http://livetapiflask-env.eba-jqjrkzgw.us-east-1.elasticbeanstalk.com/';
 
   Endpoint._sharedInstance() {
-    baseUrl = devUrl;
+    baseUrl = productionUrl;
   }
 
   static final Endpoint _instance = Endpoint._sharedInstance();

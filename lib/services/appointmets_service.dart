@@ -1,7 +1,13 @@
+import 'package:flutter/cupertino.dart';
+import 'package:livet_mobile/constans/endpoints.dart' as endpoints;
 import 'package:livet_mobile/models/appoinment.dart';
+import 'package:livet_mobile/utilities/dialogs.dart';
+import 'package:livet_mobile/utilities/endpoint.dart';
 
 class AppoinmentService {
   AppoinmentService();
+
+  final Endpoint endpointService = Endpoint();
 
   //This method should get data from the rest api
   List<Appoinment> getAppointments() {
@@ -27,5 +33,21 @@ class AppoinmentService {
         DateTime(2022, 6, 20, 15, 30, 0),
       ),
     ];
+  }
+
+  Future<List<Appoinment>> getAppoinmentList(BuildContext context) async {
+    List<Appoinment> data = [];
+    try {
+      final List<dynamic> list =
+          await endpointService.getData(endpoints.getAppointments);
+      list.map((appointment) => data.add(Appoinment.fromMap(appointment)));
+    } catch (e) {
+      await showMessageDialog(
+        title: 'Error al iniciar sesión',
+        context: context,
+        text: 'Ocurrió un error al iniciar sesión',
+      );
+    }
+    return data;
   }
 }

@@ -6,6 +6,8 @@ import 'package:loader_overlay/loader_overlay.dart';
 
 class Indicaciones extends StatelessWidget {
   Indicaciones({Key? key}) : super(key: key);
+  DateTime fechaPrueba = DateTime.now();
+  String estado = 'Pendiente';
 
   final ClinicalHistoryService _service = ClinicalHistoryService();
 
@@ -14,6 +16,11 @@ class Indicaciones extends StatelessWidget {
     return Center(
       child: Column(
         children: [
+          Text('Fecha de la última solicitud: $fechaPrueba'),
+          Text('Estado de la solicitud actual: $estado '),
+          const SizedBox(
+            height: 100,
+          ),
           const Text('Solicitar historía clínica'),
           ElevatedButton(
             onPressed: () async {

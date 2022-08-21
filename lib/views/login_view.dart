@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:livet_mobile/constans/image_routes.dart';
 import 'package:livet_mobile/constans/routes.dart';
+import 'package:livet_mobile/enum/login_status.dart';
 import 'package:livet_mobile/services/login_service.dart';
+import 'package:livet_mobile/utilities/dialogs.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class LoginView extends StatelessWidget {
@@ -18,6 +20,22 @@ class LoginView extends StatelessWidget {
     const inputBorder = UnderlineInputBorder(
       borderSide: BorderSide(color: Colors.white),
     );
+
+    Future<bool> _checkStatus(LoginStatus status) async {
+      switch (status) {
+        case LoginStatus.SUCCESSFULL:
+          return true;
+        case LoginStatus.WRONGCREDENTIALS:
+          await showMessageDialog(
+            title: 'Credenciales incorrectas',
+            context: context,
+            text: 'Las credenciales ingresadas son incorrectas',
+          );
+          return false;
+        default:
+          return false;
+      }
+    }
 
     return LoaderOverlay(
       child: Scaffold(
@@ -39,6 +57,7 @@ class LoginView extends StatelessWidget {
                           Padding(
                             padding: fieldPadding,
                             child: TextField(
+                              keyboardType: TextInputType.emailAddress,
                               style: textFieldStyle,
                               controller: _usuario,
                               decoration: const InputDecoration(
@@ -54,6 +73,7 @@ class LoginView extends StatelessWidget {
                             child: TextField(
                               style: textFieldStyle,
                               controller: _contrasenia,
+                              obscureText: true,
                               decoration: const InputDecoration(
                                 labelText: 'Contraseña',
                                 border: inputBorder,
@@ -69,15 +89,16 @@ class LoginView extends StatelessWidget {
                             onPressed: () async {
                               context.loaderOverlay.show();
                               //Navigator.of(context).popAndPushNamed(appRoute);
-                              final shouldLogin =
-                                  await _login.loginWithCredentials(
-                                email: '',
-                                password: '',
-                                context: context,
+                              final LoginStatus shouldLogin =
+                                  await _login.cognitoLogin(
+                                username: _usuario.text,
+                                password: _contrasenia.text,
                               );
-                              if (shouldLogin) {
+                              final bool login =
+                                  await _checkStatus(shouldLogin);
+                              if (login) {
                                 Navigator.of(context).popAndPushNamed(appRoute);
-                              } else {}
+                              }
                               context.loaderOverlay.hide();
                             },
                             child: const Text('Login'),

@@ -1,0 +1,4 @@
+enum LoginStatus {
+  SUCCESSFULL,
+  WRONGCREDENTIALS,
+}
