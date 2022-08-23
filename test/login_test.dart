@@ -5,65 +5,65 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:test/test.dart';
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:amazon_cognito_identity_dart_2/cognito.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:livet_mobile/auth/keys.dart';
+import 'package:livet_mobile/enum/login_status.dart';
+import 'package:livet_mobile/services/login_service.dart';
+import 'package:livet_mobile/utilities/current_user.dart';
 
 void main() {
-  final service = MockLoginService();
-
-  test(
-    'Login should return true on correct credentials',
-    () async {
-      final shouldLogin = await service.loginWithCredentials(
-          email: 'MockUser', password: 'MockPassword');
-
-      expect(shouldLogin, true);
-    },
-  );
-
-  test('User token should be stored after successful login', () async {
-    final shouldLogin = await service.loginWithCredentials(
-        email: 'MockUser', password: 'MockPassword');
-
-    expect(shouldLogin, true);
-    final prefs = await SharedPreferences.getInstance();
-
-    expect(prefs.getString('token'), const TypeMatcher<String>());
+  late LoginService login;
+  late LoggedUser user;
+  setUpAll(() {
+    login = LoginService();
+    user = LoggedUser();
   });
 
   test(
-    'Login should return false on incorrect credentials',
+    'Login should return SUCCESSFUL on correct credentials',
     () async {
-      final shouldLogin = await service.loginWithCredentials(
-          email: 'MockUser', password: 'badPassword');
+      final shouldLogin = await login.cognitoLogin(
+          username: testUsername, password: testPassword);
 
-      expect(shouldLogin, false);
+      expect(shouldLogin, LoginStatus.SUCCESSFULL);
     },
   );
 
-  test('User token should not be stored after failed login', () async {
-    final shouldLogin = await service.loginWithCredentials(
-        email: 'MockUser', password: 'badPassword');
+  test(
+    'Login should return WRONGCREDENTIALS on incorrect credentials',
+    () async {
+      final shouldLogin = await login.cognitoLogin(
+          username: 'MockUser', password: 'badPassword');
 
-    expect(shouldLogin, false);
+      expect(shouldLogin, LoginStatus.WRONGCREDENTIALS);
+    },
+  );
 
-    final prefs = await SharedPreferences.getInstance();
-    expect(prefs.getString('token'), const TypeMatcher<void>());
-  });
-}
+  test(
+    'User should not be null on SUCCESSFUL login',
+    () async {
+      final shouldLogin = await login.cognitoLogin(
+          username: testUsername, password: testPassword);
 
-class MockLoginService {
-  final String user = 'MockUser';
-  final String password = 'MockPassword';
+      expect(shouldLogin, LoginStatus.SUCCESSFULL);
 
-  Future<bool> loginWithCredentials(
-      {required String email, required String password}) async {
-    Future.delayed(const Duration(seconds: 2));
+      final userExists = user.userLogged;
 
-    if (email == user && password == this.password) {
-      SharedPreferences.setMockInitialValues({'token': '123test'});
-      return true;
-    }
-    return false;
-  }
+      expect(userExists, isA<CognitoUser>());
+    },
+  );
+
+  test(
+    'User should be null on WRONGCREDENTIALS login',
+    () async {
+      await login.cognitoLogin(username: 'MockUser', password: 'badPassword');
+
+      final userExists = user.userLogged;
+
+      expect(userExists, isA<void>());
+    },
+  );
 }

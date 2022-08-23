@@ -28,7 +28,7 @@ class Endpoint {
   Future<dynamic> getData(String path) async {
     final String url = _getUrl(path);
     final Response response = await _dio.get(url);
-    return getBody(response);
+    return response.data;
   }
 
   Future<dynamic> postData(String path, Map<String, String> body) async {

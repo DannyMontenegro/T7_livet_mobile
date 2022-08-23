@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:livet_mobile/models/indication.dart';
 import 'package:livet_mobile/widgets/appoinment_body.dart';
 import 'package:livet_mobile/widgets/appoinment_card_header.dart';
 
 class CitaCard extends StatefulWidget {
-  const CitaCard({Key? key}) : super(key: key);
-
+  const CitaCard({Key? key, required this.data}) : super(key: key);
+  final Indication data;
   @override
   State<CitaCard> createState() => _CitaCardState();
 }
@@ -19,9 +20,9 @@ class _CitaCardState extends State<CitaCard> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue,
-      child: const ExpansionTile(
-        title: HeaderCita(),
-        children: [
+      child: ExpansionTile(
+        title: HeaderCita(indication: widget.data),
+        children: const [
           BodyCita(),
         ],
       ),

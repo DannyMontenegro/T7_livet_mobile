@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:livet_mobile/constans/image_routes.dart';
+import 'package:livet_mobile/models/indication.dart';
 
 class HeaderCita extends StatelessWidget {
-  const HeaderCita({Key? key}) : super(key: key);
+  const HeaderCita({Key? key, required this.indication}) : super(key: key);
   final style = const TextStyle(color: Colors.black);
+  final Indication indication;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +19,14 @@ class HeaderCita extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Dr. Cardiológo Luis',
-              style: TextStyle(color: Colors.white),
+            Text(
+              indication.doctor.name,
+              style: const TextStyle(color: Colors.white),
             ),
-            Text('Cardiología', style: style),
+            Text(indication.doctor.speciality, style: style),
             const SizedBox(height: 5),
-            Text('Fecha: 12/12/2020', style: style),
+            //Text('Fecha: ' + indication.date.toString(), style: style),
+            Text('Fecha: 2022-05-18', style: style)
           ],
         ),
       ],
