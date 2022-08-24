@@ -1,8 +1,9 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
 import 'package:livet_mobile/constans/endpoints.dart';
-import 'package:livet_mobile/utilities/dialogs.dart';
+import 'package:livet_mobile/models/clinical_history_request.dart';
 import 'package:livet_mobile/utilities/endpoint.dart';
 
 class ClinicalHistoryService {
@@ -15,23 +16,33 @@ class ClinicalHistoryService {
 
   factory ClinicalHistoryService() => _instance;
 
-  Future<dynamic> askForClinicalHistory(BuildContext context) async {
+  Future<bool> askForClinicalHistory() async {
     try {
       final bool requestSent =
           await endpointService.postData(askClinicalHistory, {});
-      if (!requestSent) {
-        await showMessageDialog(
-            title: 'Ocurrió un error',
-            text: 'No se pudo enviar la solicitud',
-            context: context);
-      }
+
       return requestSent;
     } catch (err) {
-      await showMessageDialog(
-          title: 'Ocurrió un error',
-          text: 'No se contactar el servidor',
-          context: context);
+      log(err.toString());
+      return false;
     }
-    return true; //This should be false
+  }
+
+  Future<ClinicalHistoryRequest> checkRequest() async {
+    try {
+      final Map<String, String> data =
+          await endpointService.getData(askClinicalHistory);
+      final String? date = data['fecha'];
+
+      if (date == null) {
+        return ClinicalHistoryRequest();
+      }
+
+      return ClinicalHistoryRequest(
+          date: DateTime.parse(date), status: data['estado']);
+    } catch (error) {
+      log(error.toString());
+      return ClinicalHistoryRequest();
+    }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:livet_mobile/constans/endpoints.dart';
 import 'package:livet_mobile/models/indication.dart';
 import 'package:livet_mobile/utilities/endpoint.dart';
@@ -15,9 +17,15 @@ class IndicationsService {
   Future<List<Indication>> getIndications() async {
     final String segment = getIndicationsSegment('Erwing');
     print('DATOS');
-    final List<dynamic> data = await service.getData(segment) as List;
-    final List<Indication> indicaitons =
-        data.map((indication) => Indication.fromMap(indication)).toList();
+    List<Indication> indicaitons = [];
+    try {
+      final List<dynamic> data = await service.getData(segment) as List;
+      indicaitons =
+          data.map((indication) => Indication.fromMap(indication)).toList();
+    } catch (error) {
+      log(error.toString());
+    }
+
     return indicaitons;
   }
 }

@@ -11,8 +11,8 @@ class LoginService {
   late CognitoUser cognitoUser;
 
   final userPool = CognitoUserPool(
-    REACT_APP_COGNITO_USER_POOL_ID,
-    REACT_APP_COGNITO_CLIENT_ID,
+    reactAppCognitoUserPollId,
+    reactAppCognitoClientId,
   );
 
   LoginService();
@@ -61,10 +61,8 @@ class LoginService {
       password: password,
     );
 
-    CognitoUserSession? session;
-
     try {
-      session = await cognitoUser.authenticateUser(authDetails);
+      await cognitoUser.authenticateUser(authDetails);
       LoggedUser().userLogged = cognitoUser;
     } catch (err) {
       return LoginStatus.WRONGCREDENTIALS;

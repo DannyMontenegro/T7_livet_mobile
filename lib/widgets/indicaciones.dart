@@ -6,8 +6,8 @@ import 'package:loader_overlay/loader_overlay.dart';
 
 class Indicaciones extends StatelessWidget {
   Indicaciones({Key? key}) : super(key: key);
-  DateTime fechaPrueba = DateTime.now();
-  String estado = 'Pendiente';
+  final DateTime fechaPrueba = DateTime.now();
+  final String estado = 'Pendiente';
 
   final ClinicalHistoryService _service = ClinicalHistoryService();
 
@@ -25,7 +25,7 @@ class Indicaciones extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               context.loaderOverlay.show();
-              await _service.askForClinicalHistory(context);
+              await _service.askForClinicalHistory();
               context.loaderOverlay.hide();
             },
             child: const Text('Enviar solicitud'),
