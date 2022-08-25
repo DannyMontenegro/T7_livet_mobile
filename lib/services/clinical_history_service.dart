@@ -2,8 +2,10 @@
 
 import 'dart:developer';
 
+import 'package:amazon_cognito_identity_dart_2/cognito.dart';
 import 'package:livet_mobile/constans/endpoints.dart';
 import 'package:livet_mobile/models/clinical_history_request.dart';
+import 'package:livet_mobile/utilities/current_user.dart';
 import 'package:livet_mobile/utilities/endpoint.dart';
 
 class ClinicalHistoryService {
@@ -18,8 +20,12 @@ class ClinicalHistoryService {
 
   Future<bool> askForClinicalHistory() async {
     try {
-      final bool requestSent =
-          await endpointService.postData(askClinicalHistory, {});
+      final CognitoUser user = LoggedUser().userLogged;
+
+      final bool requestSent = await endpointService.postData(
+        askClinicalHistory,
+        {'user': user.username!},
+      );
 
       return requestSent;
     } catch (err) {

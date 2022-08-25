@@ -23,7 +23,7 @@ class Appoinment {
   void _getColor() {
     final DateTime today = DateTime.now();
     if (today.isAfter(to)) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.red;
     } else {
       backgroundColor = Colors.lightGreen;
     }

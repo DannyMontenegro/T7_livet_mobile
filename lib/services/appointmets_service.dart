@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:livet_mobile/constans/endpoints.dart' as endpoints;
 import 'package:livet_mobile/models/appoinment.dart';
 import 'package:livet_mobile/utilities/endpoint.dart';
@@ -11,24 +13,24 @@ class AppoinmentService {
   List<Appoinment> getAppointments() {
     return [
       Appoinment(
-        'Cita 1',
-        DateTime(2022, 6, 1, 10, 0, 0),
-        DateTime(2022, 6, 1, 12, 0, 0),
+        'Cita Dr. Avendaño',
+        DateTime(2022, 8, 1, 10, 0, 0),
+        DateTime(2022, 8, 1, 12, 0, 0),
       ),
       Appoinment(
-        'Cita 2',
-        DateTime(2022, 6, 17, 18, 0, 0),
-        DateTime(2022, 6, 17, 20, 0, 0),
+        'Cita Dra. García',
+        DateTime(2022, 8, 17, 10, 0, 0),
+        DateTime(2022, 8, 17, 20, 0, 0),
       ),
       Appoinment(
-        'Cita 3',
-        DateTime(2022, 6, 18, 15, 0, 0),
-        DateTime(2022, 6, 18, 15, 30, 0),
+        'Cita Dr. Avendaño',
+        DateTime(2022, 8, 27, 15, 0, 0),
+        DateTime(2022, 8, 27, 15, 30, 0),
       ),
       Appoinment(
-        'Cita 4',
-        DateTime(2022, 7, 20, 15, 0, 0),
-        DateTime(2022, 6, 20, 15, 30, 0),
+        'Cita Dra. García',
+        DateTime(2022, 8, 28, 15, 0, 0),
+        DateTime(2022, 8, 28, 15, 30, 0),
       ),
     ];
   }
@@ -40,7 +42,7 @@ class AppoinmentService {
           await endpointService.getData(endpoints.getAppointments);
       list.map((appointment) => data.add(Appoinment.fromMap(appointment)));
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
     return data;
   }

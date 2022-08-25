@@ -50,9 +50,10 @@ class _AppViewState extends State<AppView> {
           backgroundColor: Colors.white,
         ),
         body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
-            Indicaciones(),
+            const Indicaciones(),
             AppoinmentCalendar(),
             const HistoriaClinica(),
           ],

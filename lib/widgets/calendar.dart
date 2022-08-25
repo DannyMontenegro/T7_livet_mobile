@@ -9,21 +9,33 @@ class AppoinmentCalendar extends StatelessWidget {
   final AppoinmentService service = AppoinmentService();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        const SizedBox(height: 5),
-        const Center(
-          child: Text('Calendario de citas'),
-        ),
-        Expanded(
-          child: SfCalendar(
-            view: CalendarView.month,
-            monthViewSettings: const MonthViewSettings(showAgenda: true),
-            dataSource: AppoinmentDataSource(service.getAppointments()),
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 15,
+        left: 10,
+        right: 10,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 5),
+          const Center(
+            child: Text(
+              'Calendario de citas',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-      ],
+          Expanded(
+            child: SfCalendar(
+              view: CalendarView.month,
+              monthViewSettings: const MonthViewSettings(showAgenda: true),
+              dataSource: AppoinmentDataSource(service.getAppointments()),
+              showDatePickerButton: true,
+              headerDateFormat: 'MMMM-y',
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
